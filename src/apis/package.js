@@ -14,3 +14,11 @@ export const loadAllPackage = () => {
     method: 'get'
   })
 }
+
+export const updatePackage = (id, data) => {
+  return request({
+    url: `/packages/${id}`,
+    method: 'put',
+    data: data
+  })
+}
