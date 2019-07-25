@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/views/Home'
 import NewPackage from '@/views/NewPackage'
 import PackageList from '@/views/PackageList'
+import ReservePackage from '@/views/ReservePackage'
 
 Vue.use(Router)
 
@@ -20,6 +21,10 @@ export default new Router({
       {
         path: '/packageList',
         component: PackageList
+      },
+      {
+        path: '/reservePackage',
+        component: ReservePackage
       }
     ]
   }]
