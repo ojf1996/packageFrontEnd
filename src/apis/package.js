@@ -22,3 +22,11 @@ export const updatePackage = (id, data) => {
     data: data
   })
 }
+
+export const filterPackage = (data) => {
+  return request({
+    url: `/packages`,
+    method: 'get',
+    params: data
+  })
+}
