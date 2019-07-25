@@ -7,3 +7,10 @@ export const addPackage = (data) => {
     data: data
   })
 }
+
+export const loadAllPackage = () => {
+  return request({
+    url: `/packages`,
+    method: 'get'
+  })
+}
