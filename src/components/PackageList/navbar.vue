@@ -3,10 +3,10 @@
     <span>菜鸟包裹</span>
     <div class="button-wrapper">
       <div class="buttons">
-        <a-button>All</a-button>
-        <a-button>已预约</a-button>
-        <a-button>已取件</a-button>
-        <a-button>未取件</a-button>
+        <a-button v-on:click="filterPackages('')">All</a-button>
+        <a-button v-on:click="filterPackages('Reserved')">已预约</a-button>
+        <a-button v-on:click="filterPackages('Fetched')">已取件</a-button>
+        <a-button v-on:click="filterPackages('NotFetched')">未取件</a-button>
       </div>
     </div>
   </a-layout-header>
@@ -17,6 +17,15 @@ export default {
   name: 'PackageListNavbar',
   data () {
     return {}
+  },
+  methods: {
+    async filterPackages (status) {
+      if (status !== '') {
+        await this.$store.dispatch('filterPackage', status)
+      } else {
+        await this.$store.dispatch('loadAllPackages')
+      }
+    }
   }
 }
 </script>
