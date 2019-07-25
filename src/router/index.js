@@ -1,6 +1,7 @@
-import Home from '@/views/Home'
 import Vue from 'vue'
 import Router from 'vue-router'
+import Home from '@/views/Home'
+import NewPackage from '@/views/NewPackage'
 
 Vue.use(Router)
 
@@ -8,6 +9,13 @@ export default new Router({
   mode: 'history',
   routes: [{
     path: '/',
-    component: Home
+    component: Home,
+    redirect: '/newPackage',
+    children: [
+      {
+        path: '/newPackage',
+        component: NewPackage
+      }
+    ]
   }]
 })
