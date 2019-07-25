@@ -1,15 +1,16 @@
 <template>
   <div class="package-list">
-    <a-table :dataSource="data" :columns="columns" :loading="loading">
-      <template slot="operation" slot-scope="text, record, index">
-        {{text + recode + index}}
-        <a-button />
+    <a-table :dataSource="packages" :columns="columns" :loading="loading" rowKey="id">
+      <template slot="operation" slot-scope="text, record">
+        <a-button v-on:click="fetchPackage(record)">确认收货</a-button>
       </template>
     </a-table>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 const columns = [
   {
     title: '运单号',
@@ -42,9 +43,29 @@ export default {
   name: 'PackageList',
   data () {
     return {
-      data: [],
       columns: columns,
       loading: false
+    }
+  },
+  computed: {
+    ...mapGetters(['packages'])
+  },
+  async mounted () {
+    await this.loadAllPackage()
+  },
+  methods: {
+    async loadAllPackage () {
+      this.loading = true
+      await this.$store.dispatch('loadAllPackages')
+      this.loading = false
+    },
+    async fetchPackage (item) {
+      item.status = 'Fetched'
+      await this.$store.dispatch('updatePackage', {
+        id: item.id,
+        data: item
+      })
+      await this.loadAllPackage()
     }
   }
 }
