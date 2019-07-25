@@ -3,6 +3,9 @@
     <PackageListNavbar />
     <div class="package-list">
       <a-table :dataSource="packages" :columns="columns" :loading="loading" rowKey="id">
+        <template slot="fetchTime" slot-scope="text, record">
+          {{ new Date(record.fetchTime).toISOString() }}
+        </template>
         <template slot="operation" slot-scope="text, record">
           <a-button v-if="record.status != 'Fetched'" v-on:click="fetchPackage(record)">确认收货</a-button>
         </template>
@@ -34,7 +37,8 @@ const columns = [
   },
   {
     title: '预约时间',
-    dataIndex: 'fetchTime'
+    dataIndex: 'fetchTime',
+    scopedSlots: { customRender: 'fetchTime' }
   },
   {
     title: '',
