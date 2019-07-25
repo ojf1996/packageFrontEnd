@@ -1,44 +1,49 @@
 <template>
-  <div class="package-adder">
-    <a-form
-      :form="form"
-      @submit="handleSubmit"
-    >
-      <a-form-item v-bind="formItemLayout" label="运单号">
-        <a-input
-         v-decorator="['id']"
-        />
-      </a-form-item>
-      <a-form-item v-bind="formItemLayout" label="收件人">
-        <a-input
-         v-decorator="['user']"
-        />
-      </a-form-item>
-      <a-form-item v-bind="formItemLayout" label="电话">
-        <a-input
-         v-decorator="['phone']"
-        />
-      </a-form-item>
-      <a-form-item v-bind="formItemLayout" label="重量">
-        <a-input
-         v-decorator="['weight']"
-        />
-      </a-form-item>
-      <a-form-item
-        :wrapper-col="{
-          xs: { span: 24, offset: 0 },
-          sm: { span: 16, offset: 8 },
-        }"
+  <a-layout style="width:inhert;">
+    <a-layout-header style="width:inhert; background:transparent;">
+      包裹入库
+    </a-layout-header>
+    <div class="package-adder">
+      <a-form
+        :form="form"
+        @submit="handleSubmit"
       >
-        <a-button type="primary" html-type="submit">
-          Submit
-        </a-button>
-        <a-button type="danger" html-type="reset" style="margin-left: 5px;">
-          cancel
-        </a-button>
-      </a-form-item>
-    </a-form>
-  </div>
+        <a-form-item v-bind="formItemLayout" label="运单号">
+          <a-input
+          v-decorator="['id']"
+          />
+        </a-form-item>
+        <a-form-item v-bind="formItemLayout" label="收件人">
+          <a-input
+          v-decorator="['user']"
+          />
+        </a-form-item>
+        <a-form-item v-bind="formItemLayout" label="电话">
+          <a-input
+          v-decorator="['phone']"
+          />
+        </a-form-item>
+        <a-form-item v-bind="formItemLayout" label="重量">
+          <a-input
+          v-decorator="['weight']"
+          />
+        </a-form-item>
+        <a-form-item
+          :wrapper-col="{
+            xs: { span: 24, offset: 0 },
+            sm: { span: 16, offset: 8 },
+          }"
+        >
+          <a-button type="primary" html-type="submit">
+            Submit
+          </a-button>
+          <a-button type="danger" html-type="reset" style="margin-left: 5px;">
+            cancel
+          </a-button>
+        </a-form-item>
+      </a-form>
+    </div>
+  </a-layout>
 </template>
 
 <script>
