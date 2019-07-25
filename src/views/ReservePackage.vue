@@ -62,7 +62,7 @@ export default {
           'fetchTime': new Date(fieldsValue['time']).valueOf(),
           'status': 'Reserved'
         }
-        this.$store.dispatch('updatePackage', { id: values.id, data: values})
+        this.$store.dispatch('updatePackage', { id: values.id, data: values })
       })
     }
   },
