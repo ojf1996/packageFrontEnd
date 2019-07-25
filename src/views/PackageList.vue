@@ -1,14 +1,18 @@
 <template>
-  <div class="package-list">
-    <a-table :dataSource="packages" :columns="columns" :loading="loading" rowKey="id">
-      <template slot="operation" slot-scope="text, record">
-        <a-button v-if="recode.status == 'Fetched'" v-on:click="fetchPackage(record)">确认收货</a-button>
-      </template>
-    </a-table>
+  <div class="package-page">
+    <PackageListNavbar />
+    <div class="package-list">
+      <a-table :dataSource="packages" :columns="columns" :loading="loading" rowKey="id">
+        <template slot="operation" slot-scope="text, record">
+          <a-button v-if="record.status == 'Fetched'" v-on:click="fetchPackage(record)">确认收货</a-button>
+        </template>
+      </a-table>
+    </div>
   </div>
 </template>
 
 <script>
+import PackageListNavbar from '@/components/PackageList/navbar'
 import { mapGetters } from 'vuex'
 
 const columns = [
@@ -47,6 +51,9 @@ export default {
       loading: false
     }
   },
+  components: {
+    PackageListNavbar
+  },
   computed: {
     ...mapGetters(['packages'])
   },
@@ -72,6 +79,10 @@ export default {
 </script>
 
 <style>
+.package-page {
+  height: inherit;
+  width: 100%;
+}
 .package-list {
   height:100%;
   display: flex;
