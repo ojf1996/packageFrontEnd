@@ -4,7 +4,7 @@
     <div class="package-list">
       <a-table :dataSource="packages" :columns="columns" :loading="loading" rowKey="id">
         <template slot="operation" slot-scope="text, record">
-          <a-button v-if="record.status == 'Fetched'" v-on:click="fetchPackage(record)">确认收货</a-button>
+          <a-button v-if="record.status != 'Fetched'" v-on:click="fetchPackage(record)">确认收货</a-button>
         </template>
       </a-table>
     </div>
