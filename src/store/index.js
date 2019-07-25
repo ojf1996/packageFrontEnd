@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { addPackage, loadAllPackage } from '@/apis/package'
+import { addPackage, loadAllPackage, updatePackage } from '@/apis/package'
 
 Vue.use(Vuex)
 
@@ -20,6 +20,9 @@ export default new Vuex.Store({
     async loadAllPackages ({ commit }) {
       const result = await loadAllPackage()
       commit('LOAD_PACKAGES', result.data)
+    },
+    async updatePackage ({ commit }, { id, data }) {
+      await updatePackage(id, data)
     }
   },
   getters: {
